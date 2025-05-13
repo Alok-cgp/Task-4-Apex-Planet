@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .todo-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .input-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-left: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+
+    li {
+      background: #f9f9f9;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 5px;
+    }
+
+    .remove-btn {
+      background: #e74c3c;
+      border: none;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="todo-container">
+    <h2>My To-Do List</h2>
+    <div class="input-group">
+      <input type="text" id="taskInput" placeholder="Add a new task">
+      <button onclick="addTask()">Add</button>
+    </div>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    window.onload = function () {
+      const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      savedTasks.forEach(task => {
+        addTaskToDOM(task);
+      });
+    };
+  
+    function addTask() {
+      const input = document.getElementById('taskInput');
+      const taskText = input.value.trim();
+  
+      if (taskText === '') {
+        alert("Please enter a task!");
+        return;
+      }
+  
+      addTaskToDOM(taskText);
+      saveTask(taskText);
+      input.value = '';
+    }
+  
+    function addTaskToDOM(taskText) {
+      const li = document.createElement('li');
+      li.textContent = taskText;
+  
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = '✕';
+      removeBtn.className = 'remove-btn';
+      removeBtn.onclick = function () {
+        li.remove();
+        removeTask(taskText);
+      };
+  
+      li.appendChild(removeBtn);
+      document.getElementById('taskList').appendChild(li);
+    }
+  
+    function saveTask(taskText) {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.push(taskText);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  
+    function removeTask(taskText) {
+      let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks = tasks.filter(task => task !== taskText);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  </script>
+  
+</body>
+</html>
