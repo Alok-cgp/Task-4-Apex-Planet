@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Alok Kumar Shaw</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <h1>Alok Shaw</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><button id="theme-toggle">🌙</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="projects">
+    <h1>My Projects</h1>
+    
+    <!-- First two projects displayed by default -->
+    <div class="project">
+        <h2>Calculator</h2>
+        <p>A simple calculator project built using JavaScript.</p>
+        <a href="https://calculator-three-delta-25.vercel.app/" target="_blank">View Project</a>
+    </div>
+    
+    <div class="project">
+        <h2>To-Do List</h2>
+        <p>A task manager app to organize your to-do list.</p>
+        <a href="https://to-do-list-one-ochre-72.vercel.app/" target="_blank">View Project</a>
+    </div>
+
+    <!-- Hidden projects initially -->
+    <div id="more-projects" style="display: none;">
+        <div class="project">
+            <h2>Quiz and Joke</h2>
+            <p>A fun quiz and joke application built with HTML, CSS, and JavaScript.</p>
+            <a href="https://quiz-and-joke-project.vercel.app/" target="_blank">View Project</a>
+        </div>
+
+        <div class="project">
+            <h2>Intermediate CSS and JS</h2>
+            <p>A showcase of intermediate-level CSS and JavaScript concepts in practice.</p>
+            <a href="https://intermediate-css-and-js.vercel.app/" target="_blank">View Project</a>
+        </div>
+    </div>
+
+    <!-- See More Button -->
+    <div class="see-more">
+        <button id="see-more-btn">See More Projects</button>
+    </div>
+</section>
+
+  <script src="script.js"></script>
+</body>
+</html>

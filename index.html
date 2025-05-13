@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Listing Page</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Product Listing</h1>
+
+    <!-- Filters and Sort -->
+    <div class="filters">
+      <div>
+        <label for="category">Category:</label>
+        <select id="category">
+          <option value="all">All</option>
+          <option value="electronics">Electronics</option>
+          <option value="clothing">Clothing</option>
+          <option value="home">Home</option>
+          <option value="furniture">Furniture</option>
+          <option value="accessories">Accessories</option>
+          <option value="books">Books</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="price">Max Price:</label>
+        <input type="range" id="price" min="0" max="1000" step="50" value="1000" />
+        <span id="priceValue">1000</span>
+      </div>
+
+      <div>
+        <label for="sort">Sort by Rating:</label>
+        <select id="sort">
+          <option value="default">Default</option>
+          <option value="high">High to Low</option>
+          <option value="low">Low to High</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Products List -->
+    <div id="products" class="product-list"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
